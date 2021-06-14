@@ -1,24 +1,37 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # rmdocs
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 Browse help files as RMarkdown source documents.
 
 ## Installation
 
+
+
 ``` r
 # install.packages("devtools")
 devtools::install_github("milesmcbain/rmdocs")
 ```
-
 ## Example
 
-``` r
+
+```{r example, eval = FALSE}
 rmdocs::rmd_help(help)
 ```
 
@@ -26,7 +39,7 @@ rmdocs::rmd_help(help)
 
 In `keybindings.json`:
 
-``` json
+```{json}
 [
     {
         "description": "Rmd helpfile for object",
