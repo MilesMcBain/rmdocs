@@ -14,13 +14,15 @@ rmd_help <- function(topic) {
   the_topic <- deparse(substitute(topic))
   my_tmp <- tempfile()
   x <- tools::Rd2txt(
-    utils:::.getHelpFile(utils::help(filter)[[1]]),
+    utils:::.getHelpFile(utils::help(topic)[[1]]),
     out = my_tmp,
     options = list(
       width = getOption("rmd_doc_width", default = 80),
       itemBullet = "* ",
-      underline_titles = "FALSE",
-      sectionIndent = 0
+      underline_titles = FALSE,
+      sectionIndent = 0,
+      code_quote = TRUE,
+      showURLs = TRUE
     )
   )
   
