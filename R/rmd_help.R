@@ -14,7 +14,7 @@ rmd_help <- function(topic) {
   the_topic <- deparse(substitute(topic))
   my_tmp <- tempfile()
   x <- tools::Rd2txt(
-    utils:::.getHelpFile(utils::help(topic)[[1]]),
+    utils:::.getHelpFile(utils::help(the_topic)[[1]]),
     out = my_tmp,
     options = list(
       width = getOption("rmd_doc_width", default = 80),
