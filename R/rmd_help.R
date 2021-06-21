@@ -1,7 +1,7 @@
 #' Browse a help file as an Rmd
 #'
 #' A drop-in replacement for `help()`.
-#' 
+#'
 #' FUNCTION_DESCRIPTION
 #'
 #' @param topic bare symbol to search for help on.
@@ -25,8 +25,8 @@ rmd_help <- function(topic) {
       showURLs = TRUE
     )
   )
-  
-  help_file <- 
+
+  help_file <-
     readr::read_file(my_tmp)
 
   ## Set headings to markdown style
@@ -37,8 +37,7 @@ rmd_help <- function(topic) {
   examples_line <- which(grepl("#+\\sExamples", md_help))
   if (any(examples_line)) {
     rmd_help <- c(md_help[1:examples_line + 1], "```{r}", md_help[(examples_line + 2):length(md_help)], "```")
-  } else
-  {
+  } else {
     rmd_help <- md_help
   }
   rstudioapi::documentNew(text = paste0(rmd_help, collapse = "\n"), type = "help.Rmd")
