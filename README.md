@@ -16,11 +16,14 @@ Browse help files as RMarkdown source documents.
 devtools::install_github("milesmcbain/rmdocs")
 ```
 
-## Example
+## Usage
 
 ``` r
 rmdocs::rmd_help(help)
 ```
+
+Use option `rmd_doc_width` to control the text width of the
+documentation output. Defaults to 80.
 
 ### VSCode setup
 
