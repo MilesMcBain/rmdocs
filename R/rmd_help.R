@@ -10,7 +10,7 @@
 #' @export
 #' @examples
 #' rmd_help(help)
-# rmd_help <- function(topic) {
+rmd_help <- function(topic) {
   the_topic <- deparse(substitute(topic))
   help_matches <- utils::help(the_topic)
   if (length(help_matches) < 1) stop("Couldn't find help for ", as.character(the_topic))
