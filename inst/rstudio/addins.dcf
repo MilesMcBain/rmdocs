@@ -1,4 +1,4 @@
 Name: RMarkdown help() on object
 Description: help() as Rmd for word at cursor or selection
-binding: rs_rmd_help
-interactive: false
+Binding: rs_rmd_help
+Interactive: false
