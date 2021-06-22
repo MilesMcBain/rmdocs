@@ -13,6 +13,7 @@
 rmd_help <- function(topic) {
   the_topic <- deparse(substitute(topic))
   my_tmp <- tempfile()
+  on.exit(unlink(my_tmp))
   x <- tools::Rd2txt(
     utils:::.getHelpFile(utils::help(the_topic)[[1]]),
     out = my_tmp,
