@@ -25,7 +25,7 @@ rmdocs::rmd_help(help)
 Use option `rmd_doc_width` to control the text width of the
 documentation output. Defaults to 80.
 
-### VSCode setup
+### VSCode
 
 In `keybindings.json`:
 
@@ -35,8 +35,15 @@ In `keybindings.json`:
         "description": "Rmd helpfile for object",
         "key": "ctrl+shift+h",
         "command": "r.runCommandWithSelectionOrWord",
-        "args": "rmdocs::rmd_help($$)",
+        "args": "rmddocs::rmd_help($$)",
         "when": "editorTextFocus"
     },
 ]
 ```
+
+### RStudio
+
+[Bind the
+addin](https://www.infoworld.com/article/3327573/do-more-with-r-rstudio-addins-and-keyboard-shortcuts.html)
+‘Rmarkdown help() on object’ to a choice keyboard shortcut and away you
+go.

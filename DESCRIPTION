@@ -1,15 +1,16 @@
 Package: rmdocs
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Open R help files in RMarkdown format  
+Version: 0.0.1
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Miles",
+           family = "McBain",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "miles.mcbain@gmail.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: Open R Help files in RMarkdown format in a new editor tab. 
+    Includes an RStudio addin to do this for the current selection or word cursor is on.
+    Compatible with RStudio and VSCode.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
