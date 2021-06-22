@@ -1,12 +1,12 @@
 #' Browse a help file as an Rmd
 #'
-#' A drop-in replacement for `help()`.
-#'
-#' FUNCTION_DESCRIPTION
+#' A drop-in replacement for `help()` that opens the help file as Rmd.
+#' 
+#' You're better off binding this to a key. See README.
 #'
 #' @param topic bare symbol to search for help on.
 #'
-#' @return nothing
+#' @return nothing. Opens help as side effect.
 #' @export
 #' @examples
 #' rmd_help(help)

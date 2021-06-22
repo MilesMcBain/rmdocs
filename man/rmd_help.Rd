@@ -10,13 +10,13 @@ rmd_help(topic)
 \item{topic}{bare symbol to search for help on.}
 }
 \value{
-nothing
+nothing. Opens help as side effect.
 }
 \description{
-A drop-in replacement for \code{help()}.
+A drop-in replacement for \code{help()} that opens the help file as Rmd.
 }
 \details{
-FUNCTION_DESCRIPTION
+You're better off binding this to a key. See README.
 }
 \examples{
 rmd_help(help)
