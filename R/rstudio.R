@@ -10,7 +10,8 @@
 #' @export
 rs_rmd_help <- function() {
     word_or_selection <- get_word_or_selection()
-    rmd_help(word_or_selection)
+    help_call <- bquote(rmd_help(.(as.symbol(word_or_selection))))
+    eval(help_call)
 }
 
 get_word_or_selection <- function() {
