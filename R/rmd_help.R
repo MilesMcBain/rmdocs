@@ -59,7 +59,8 @@ rmd_help <- function(topic) {
     usage_end_line <- min(headings[headings > usage_line]) - 2
     rmd_help <- c(
       rmd_help[1:usage_line + 1],
-      "```{r}",
+      # Mark this usage chunk for non-evalualtion
+      "```{r eval=FALSE}",
       rmd_help[(usage_line + 2):usage_end_line],
       "```",
       rmd_help[(usage_end_line + 1):length(rmd_help)]
