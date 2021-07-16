@@ -27,7 +27,8 @@ documentation output. Defaults to 80.
 
 ### VSCode
 
-In `keybindings.json`:
+In `keybindings.json`, assuming you have `{rstudioapi}` emulation
+enabled:
 
 ``` json
 [
@@ -35,7 +36,7 @@ In `keybindings.json`:
         "description": "Rmd helpfile for object",
         "key": "ctrl+shift+h",
         "command": "r.runCommandWithSelectionOrWord",
-        "args": "rmddocs::rmd_help($$)",
+        "args": "rmddocs::rs_rmd_help()",
         "when": "editorTextFocus"
     },
 ]
