@@ -12,11 +12,22 @@
 #' rmd_help(help)
 rmd_help <- function(topic) {
   the_topic <- deparse(substitute(topic))
-  help_matches <- utils::help(the_topic)
+  is_namespaced <- grepl(":{2,3}", the_topic)
+  help_call_args <- list()
+  if (is_namespaced) {
+    the_topic_split <- strsplit(the_topic, ":{2,3}")[[1]]
+    help_call_args$package <- the_topic_split[[1]]
+    help_call_args$topic <- the_topic_split[[2]]
+  } else {
+    help_call_args$topic <- the_topic
+  }
+  help_matches <- do.call(utils::help, help_call_args)
   if (length(help_matches) < 1) stop("Couldn't find help for ", as.character(the_topic))
 
   help_file <- help_matches[[1]]
   help_file_name <- fs::path_file(help_file)
+  help_file_path_split <- fs::path_split(help_file)[[1]]
+  help_file_folder <- help_file_path_split[[length(help_file_path_split) - 2]]  # <pkg_folder>/help
   pkg_user_dir <- get_pkg_user_dir()
   target_file_name <- paste0(help_file_name, "_help.rmd")
   target_file <- fs::file_create(file.path(pkg_user_dir, target_file_name))
@@ -66,7 +77,7 @@ rmd_help <- function(topic) {
     )
   }
 
-  rmd_help <- c(paste0("# ", help_file_name), "", rmd_help)
+  rmd_help <- c(paste0("# {", help_file_folder, "} / ", help_file_name), "", rmd_help)
   readr::write_file(paste0(rmd_help, collapse = "\n"), target_file)
   rstudioapi::navigateToFile(target_file)
 }

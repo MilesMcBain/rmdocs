@@ -46,7 +46,7 @@ get_cursor_col <- function(current_selection) {
 }
 
 get_symbol_locations <- function(code_line) {
-    matches <- gregexpr("(?:[A-Za-z]|[.][A-Za-z])[A-Za-z0-9_.]+",
+    matches <- gregexpr("(?:[A-Za-z]|[.][A-Za-z])[A-Za-z0-9_.]+(?::{2,3}(?:[A-Za-z]|[.][A-Za-z])[A-Za-z0-9_.]+)?",
         code_line,
         perl = TRUE
     )
