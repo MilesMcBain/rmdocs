@@ -4,7 +4,7 @@
 \alias{rmd_help}
 \title{Browse a help file as an Rmd}
 \usage{
-rmd_help(topic)
+rmd_help(topic, package = NULL)
 }
 \arguments{
 \item{topic}{bare symbol to search for help on.}

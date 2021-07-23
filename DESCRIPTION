@@ -1,6 +1,6 @@
 Package: rmdocs
 Title: Open R help files in RMarkdown format  
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: 
     person(given = "Miles",
            family = "McBain",

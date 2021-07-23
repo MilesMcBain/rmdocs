@@ -35,6 +35,12 @@ rmdocs::rmd_help(help)
 Use option `rmd_doc_width` to control the text width of the documentation
 output. Defaults to 80.
 
+### Replacing `help` and `?`
+
+So in love with Rmd help that you can't imagine it any other way? I HEAR you.
+If you call `library(rmdocs)` Rmarkdown generating replacements for
+`utils::help` and `utils::?` will be loaded into your session. Avoid the `library` call if you don't want that.
+
 ### VSCode 
 
 In `keybindings.json`, assuming you have `{rstudioapi}` emulation enabled:

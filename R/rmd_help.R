@@ -10,16 +10,18 @@
 #' @export
 #' @examples
 #' rmd_help(help)
-rmd_help <- function(topic) {
+rmd_help <- function(topic, package = NULL) {
   the_topic <- deparse(substitute(topic))
   is_namespaced <- grepl(":{2,3}", the_topic)
   help_call_args <- list()
+  if (is_namespaced && !is.null(package)) package <- NULL ## namespace takes priority
   if (is_namespaced) {
     the_topic_split <- strsplit(the_topic, ":{2,3}")[[1]]
     help_call_args$package <- the_topic_split[[1]]
     help_call_args$topic <- the_topic_split[[2]]
   } else {
     help_call_args$topic <- the_topic
+    if (!is.null(package)) help_call_args$package <- package
   }
   help_matches <- do.call(utils::help, help_call_args)
   if (length(help_matches) < 1) stop("Couldn't find help for ", as.character(the_topic))
@@ -89,4 +91,16 @@ get_pkg_user_dir <- function() {
     dir.create(rmdocs_user_dir, recursive = TRUE)
   }
   rmdocs_user_dir
+}
+
+#' @noRd
+#' @export
+`?` <- function(e1, e2) eval(bquote(rmdocs::rmd_help(.(substitute(e1)))))
+
+#' @noRd
+#' @export
+help <- rmd_help
+
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage("{rmdocs} is maksing `?` and `help` to bring you {rmarkdown} help. Long Live RMD!")
 }
