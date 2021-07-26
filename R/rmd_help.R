@@ -1,7 +1,7 @@
 #' Browse a help file as an Rmd
 #'
 #' A drop-in replacement for `help()` that opens the help file as Rmd.
-#' 
+#'
 #' You're better off binding this to a key. See README.
 #'
 #' @param topic bare symbol to search for help on.
@@ -29,7 +29,7 @@ rmd_help <- function(topic, package = NULL) {
   help_file <- help_matches[[1]]
   help_file_name <- fs::path_file(help_file)
   help_file_path_split <- fs::path_split(help_file)[[1]]
-  help_file_folder <- help_file_path_split[[length(help_file_path_split) - 2]]  # <pkg_folder>/help
+  help_file_folder <- help_file_path_split[[length(help_file_path_split) - 2]] # <pkg_folder>/help
   pkg_user_dir <- get_pkg_user_dir()
   target_file_name <- paste0(help_file_name, "_help.rmd")
   target_file <- fs::file_create(file.path(pkg_user_dir, target_file_name))
@@ -44,14 +44,24 @@ rmd_help <- function(topic, package = NULL) {
       sectionIndent = 0,
       code_quote = TRUE,
       showURLs = TRUE
-    )
+    ),
+    outputEncoding = "UTF-8"
   )
 
-  help_file <-
-    readr::read_file(target_file)
+  help_text <-
+    paste0(
+      readLines(target_file, encoding = "UTF-8"),
+      collapse = "\n"
+      )
+
 
   ## Set headings to markdown style
-  with_headings <- gsub("(\\r?\\n\\r?\\n)([A-Z].*)(?<=:)(\\r?\\n\\r?\\n)", "\\1### \\2\\3", help_file, perl = TRUE)
+  with_headings <- gsub(
+    "(\\r?\\n\\r?\\n)([A-Z].*)(?<=:)(\\r?\\n\\r?\\n)",
+    "\\1### \\2\\3",
+    help_text,
+    perl = TRUE
+  )
   without_heading_colons <- gsub("(\\r?\\n###[^:]+):", "\\1", with_headings)
   md_help <- strsplit(without_heading_colons, "\\r?\\n")[[1]]
 
