@@ -102,5 +102,5 @@ get_pkg_user_dir <- function() {
 help <- rmd_help
 
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage("{rmdocs} is maksing `?` and `help` to bring you {rmarkdown} help. Long Live RMD!")
+  packageStartupMessage("{rmdocs} is masking `?` and `help` to bring you {rmarkdown} help. Long Live RMD!")
 }
