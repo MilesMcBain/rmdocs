@@ -2,14 +2,17 @@
 #'
 #' A drop-in replacement for `help()` that opens the help file as Rmd.
 #'
-#' You're better off binding this to a key. See README.
+#' You're better off binding this to a key or using the RStudio addin. See
+#'  README.
 #'
-#' @param topic bare symbol to search for help on.
-#'
+#' @param topic bare symbol to search for help on. pkg::func syntax is supported and if used `package` is ignored.
+#' @param package package name to resolve symbol in
 #' @return nothing. Opens help as side effect.
 #' @export
 #' @examples
+#' \dontrun{
 #' rmd_help(help)
+#' }
 rmd_help <- function(topic, package = NULL) {
   the_topic <- deparse(substitute(topic))
   is_namespaced <- grepl(":{2,3}", the_topic)
@@ -96,7 +99,7 @@ rmd_help <- function(topic, package = NULL) {
 }
 
 get_pkg_user_dir <- function() {
-  rmdocs_user_dir <- tools::R_user_dir("rmdocs")
+  rmdocs_user_dir <- R_user_dir("rmdocs")
   if (!dir.exists(rmdocs_user_dir)) {
     dir.create(rmdocs_user_dir, recursive = TRUE)
   }

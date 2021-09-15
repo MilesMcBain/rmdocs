@@ -1,4 +1,5 @@
 .onLoad <- function(libname, pkgname) {
+	backports::import(pkgname, "R_user_dir", force = TRUE)
 	pkg_user_dir <- get_pkg_user_dir()
 	file_info_df <- fs::file_info(list.files(pkg_user_dir, full.names = TRUE))
 	# Remove all files from previous days

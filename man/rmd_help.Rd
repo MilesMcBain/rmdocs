@@ -7,7 +7,9 @@
 rmd_help(topic, package = NULL)
 }
 \arguments{
-\item{topic}{bare symbol to search for help on.}
+\item{topic}{bare symbol to search for help on. pkg::func syntax is supported and if used \code{package} is ignored.}
+
+\item{package}{package name to resolve symbol in}
 }
 \value{
 nothing. Opens help as side effect.
@@ -16,8 +18,11 @@ nothing. Opens help as side effect.
 A drop-in replacement for \code{help()} that opens the help file as Rmd.
 }
 \details{
-You're better off binding this to a key. See README.
+You're better off binding this to a key or using the RStudio addin. See
+README.
 }
 \examples{
+\dontrun{
 rmd_help(help)
+}
 }
