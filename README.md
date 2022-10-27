@@ -43,7 +43,7 @@ enabled:
         "description": "Rmd helpfile for object",
         "key": "ctrl+shift+h",
         "command": "r.runCommandWithSelectionOrWord",
-        "args": "rmddocs::rs_rmd_help()",
+        "args": "rmdocs::rs_rmd_help()",
         "when": "editorTextFocus"
     },
 ]
