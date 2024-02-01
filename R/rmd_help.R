@@ -69,7 +69,7 @@ rmd_help <- function(topic, package = NULL) {
   md_help <- strsplit(without_heading_colons, "\\r?\\n")[[1]]
 
   examples_line <- which(grepl("###\\sExamples", md_help))
-  if (any(examples_line)) {
+  if (length(examples_line) > 0) {
     rmd_help <- c(
       md_help[1:examples_line + 1],
       "```{r}",
@@ -80,7 +80,7 @@ rmd_help <- function(topic, package = NULL) {
     rmd_help <- md_help
   }
   usage_line <- which(grepl("###\\sUsage", rmd_help))
-  if (any(usage_line)) {
+  if (length(usage_line) > 0) {
     headings <- which(grepl("^###", rmd_help))
     usage_end_line <- min(headings[headings > usage_line]) - 2
     rmd_help <- c(
